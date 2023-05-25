@@ -24,7 +24,6 @@ def ProductView(request):
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def create_product(request):
-    print(request.user)
     request.data["user"] = request.user
     serializer = ProductSerializer(
         data=request.data, context={'request': request})
