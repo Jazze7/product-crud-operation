@@ -54,13 +54,13 @@ def edit_product(request, pk):
         instance = Product.objects.get(pk=pk)
         request.data["user"] = request.user
         serializer = ProductSerializer(
-            instance=instance, data=request.data, Partial=True, context={'request': request})
+            instance=instance, data=request.data, partial=True, context={'request': request})
         if serializer.is_valid():
             serializer.save(user=request.user)
 
             response_data = {
                 "status_code": 6000,
-                "message": "successfully added product"
+                "message": "successfully edited product"
 
             }
             return Response(response_data)
